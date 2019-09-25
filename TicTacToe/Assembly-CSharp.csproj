@@ -72,7 +72,6 @@
      <Compile Include="Assets\Scripts\Board.cs" />
      <Compile Include="Assets\Scripts\HeuristicAlgorithm.cs" />
      <Compile Include="Assets\Scripts\MinMaxAlgorithm.cs" />
-     <Compile Include="Assets\Scripts\StateTree.cs" />
      <Compile Include="Assets\Scripts\TicTacToe.cs" />
      <None Include="Assets\ProCore\ProGrids\Shader\pg_GridShader.shader" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_TransparentOverlay.shader" />
@@ -100,31 +99,31 @@
      <None Include="Assets\ProCore\ProBuilder\readme.txt" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_SmoothingPreview.shader" />
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>C:/Users/bdedeurwaerder/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>F:/MainFiles/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>C:/Users/bdedeurwaerder/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>F:/MainFiles/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/bdedeurwaerder/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>F:/MainFiles/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/bdedeurwaerder/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>F:/MainFiles/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>C:/Users/bdedeurwaerder/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>F:/MainFiles/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/Users/bdedeurwaerder/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>F:/MainFiles/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>C:/Users/bdedeurwaerder/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>F:/MainFiles/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/bdedeurwaerder/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>F:/MainFiles/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/bdedeurwaerder/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>F:/MainFiles/Documents/GitHub/AITicTacToe/TicTacToe/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -304,19 +303,19 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
  </Reference>
  <Reference Include="ProBuilderCore-Unity5">
- <HintPath>C:/Users/bdedeurwaerder/Documents/GitHub/AITicTacToe/TicTacToe/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
+ <HintPath>F:/MainFiles/Documents/GitHub/AITicTacToe/TicTacToe/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
  </Reference>
  <Reference Include="ProBuilderMeshOps-Unity5">
- <HintPath>C:/Users/bdedeurwaerder/Documents/GitHub/AITicTacToe/TicTacToe/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
+ <HintPath>F:/MainFiles/Documents/GitHub/AITicTacToe/TicTacToe/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
  </Reference>
  <Reference Include="KdTreeLib">
- <HintPath>C:/Users/bdedeurwaerder/Documents/GitHub/AITicTacToe/TicTacToe/Assets/ProCore/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
+ <HintPath>F:/MainFiles/Documents/GitHub/AITicTacToe/TicTacToe/Assets/ProCore/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
  </Reference>
  <Reference Include="pb_Stl">
- <HintPath>C:/Users/bdedeurwaerder/Documents/GitHub/AITicTacToe/TicTacToe/Assets/ProCore/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
+ <HintPath>F:/MainFiles/Documents/GitHub/AITicTacToe/TicTacToe/Assets/ProCore/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
  </Reference>
  <Reference Include="Poly2Tri">
- <HintPath>C:/Users/bdedeurwaerder/Documents/GitHub/AITicTacToe/TicTacToe/Assets/ProCore/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
+ <HintPath>F:/MainFiles/Documents/GitHub/AITicTacToe/TicTacToe/Assets/ProCore/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.5f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

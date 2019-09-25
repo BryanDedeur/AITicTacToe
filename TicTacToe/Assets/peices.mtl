@@ -1,0 +1,20 @@
+newmtl Union2Mtl
+Material Color
+Ka 0.00715504 0.018913 0.0315514
+Kd 0.00715504 0.018913 0.0315514
+Ks 0.00286202 0.00756519 0.0126206 
+
+d 1
+
+Ns 9
+
+newmtl Union1Mtl
+Material Color
+Ka 1 0 0
+Kd 1 0 0
+Ks 0.4 0 0 
+
+d 1
+
+Ns 9
+

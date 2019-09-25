@@ -752,11 +752,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MinMaxAlgorithm.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TicTacToe.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/HeuristicAlgorithm.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TicTacToe.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/StateTree.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MinMaxAlgorithm.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -764,10 +763,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/HeuristicAlgorithm.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TreeBuilder.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TreeBuilderThread.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/TicTacToe.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/StateTree.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Board.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MinMaxAlgorithm.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Board.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TicTacToe.cs" />
       </list>
     </option>
   </component>
@@ -823,6 +822,8 @@
       <workItem from="1569118842276" duration="23954000" />
       <workItem from="1569261412585" duration="6798000" />
       <workItem from="1569380182428" duration="8805000" />
+      <workItem from="1569390349862" duration="7414000" />
+      <workItem from="1569398488037" duration="10237000" />
     </task>
     <servers />
   </component>
@@ -836,7 +837,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

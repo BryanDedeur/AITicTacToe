@@ -1,17 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
 
 public class MinMaxAlgorithm : MonoBehaviour
 {
     // public 
-    private Dictionary<string, Board.move> scenarioMap; // string = encoded board state, move = next best move
+    public Dictionary<string, int> scenarioMap; // string = encoded board state, move = next best move
 
     public char maximizingPlayer = 'X';
     // private
 
+    private void Start()
+    {
+        scenarioMap = new Dictionary<string, int>();
+    }
+
     public Board.move FindBestMove(char[,] board, char player)
     {
+        List<Board.move> bestMoveList = new List<Board.move>();
+
         Board.move bestMove = new Board.move();
         bestMove.score = -100;
         for (ushort x = 0; x < 3; x++)
@@ -22,58 +30,85 @@ public class MinMaxAlgorithm : MonoBehaviour
                 {
                     char[,] scenarioBoard = Board.MirorBoard(board);
                     scenarioBoard[x, y] = player;
-                    string encodedBoard = Board.Encode(board);
+                    string encodedBoard = Board.Encode(scenarioBoard);
                     // using memoization to speed things up
-                    if (scenarioMap.ContainsKey(encodedBoard))
+/*                    if (!scenarioMap.ContainsKey(encodedBoard))
                     {
-                        if (scenarioMap[encodedBoard].score > bestMove.score)
-                        {
-                            bestMove = scenarioMap[encodedBoard];
-                        }
-                    }
-                    else
+                        Board.move someMove = new Board.move();
+                        someMove.depth = 0;
+                        someMove.x = x;
+                        someMove.y = y;
+                        someMove.score = Minimax(scenarioBoard, 0, player, x, y);
+                        //scenarioMap.Add(encodedBoard, someMove);
+                    }*/
+  
+                    Board.move someMove = new Board.move();
+                    someMove.depth = 0;
+                    someMove.x = x;
+                    someMove.y = y;
+                    someMove.score = Minimax(scenarioBoard, 0, player, x, y);
+
+                    if (someMove.score > bestMove.score)
                     {
-                        if (Minimax(scenarioBoard, 0, player, x, y) > bestMove.score)
-                        {
-                            bestMove = scenarioMap[encodedBoard];
-                        }
+                        bestMove.x = x;
+                        bestMove.y = y;
+                        bestMove.score = someMove.score;
                     }
+                    
+/*                    if (scenarioMap[encodedBoard] > bestMove.score)
+                    {
+                        bestMove.x = x;
+                        bestMove.y = y;
+                        bestMove.score = scenarioMap[encodedBoard];
+                        //bestMoveList.Clear();
+                        //bestMoveList.Add(scenarioMap[encodedBoard]);
+                        //bestMove = scenarioMap[encodedBoard];
+                    } else if (scenarioMap[encodedBoard] == bestMove.score)
+                    {
+                        //bestMoveList.Add(scenarioMap[encodedBoard]);
+                    }*/
+                    print(encodedBoard);
+                    print("Move (" + x + "," + y + ") score is: " + someMove.score);
                 }
             }
         }
+        
+        // select random move
+        
         return bestMove;
     }
     
-    public short GetBoardScore(char[,] board, char player, ushort x, ushort y)
+    public int GetBoardScore(char[,] board, ushort depth, char player, ushort x, ushort y)
     {
         char winner = Board.GetWinner(board, player, x, y);
         if (winner == maximizingPlayer)
         {
-            return -10;
+            return 10;
         }
         else if (winner == Board.OppositePlayer(maximizingPlayer))
         {
-            return 10;
+            return -10;
         }
 
         return 0;
     }
     
-    public short Minimax(char[,] board, ushort depth, char player, ushort x, ushort y)
+    public int Minimax(char[,] board, ushort depth, char player, ushort x, ushort y)
     {
-        Board.move someMove = new Board.move();
-        someMove.depth = depth;
-        someMove.x = x;
-        someMove.y = y;
         string encodedBoard = Board.Encode(board);
         if (Board.TerminalState(board, player, x, y))
         {
-            someMove.score = GetBoardScore(board, player, x, y);
-            scenarioMap.Add(encodedBoard, someMove);
-            return someMove.score;
+            int score = GetBoardScore(board, depth, player, x, y);
+/*            if (!scenarioMap.ContainsKey(encodedBoard))
+            {
+                scenarioMap.Add(encodedBoard, score);
+            }*/
+            return score;
         }
         
+        //char[,] scenarioBoard = Board.MirorBoard(board);
         Board.move bestMove = new Board.move();
+        bestMove.depth = depth;
         depth += 1;
         if (player == maximizingPlayer) // maximize
         {
@@ -84,15 +119,20 @@ public class MinMaxAlgorithm : MonoBehaviour
                 {
                     if (board[xIndex, yIndex] == Board.emptyPosition)
                     {
+                        char[,] subBoard = Board.MirorBoard(board);
+                        subBoard[xIndex, yIndex] = Board.OppositePlayer(player);
+                        string subEncoded = Board.Encode(subBoard);
                         if (!scenarioMap.ContainsKey(encodedBoard))
                         {
-                            board[xIndex, yIndex] = Board.OppositePlayer(player);
-                            someMove.score = Minimax(board, depth, Board.OppositePlayer(player), xIndex, yIndex);
-                            scenarioMap.Add(encodedBoard, someMove);
+                            //scenarioMap.Add(subEncoded, Minimax(subBoard, depth, Board.OppositePlayer(player), xIndex, yIndex));
                         }
-                        if (someMove.score > bestMove.score)
+
+                        int score = Minimax(subBoard, depth, Board.OppositePlayer(player), xIndex, yIndex);
+                        if (score > bestMove.score)
                         {
-                            someMove = scenarioMap[encodedBoard];
+                            bestMove.score = score;
+                            bestMove.x = xIndex;
+                            bestMove.y = yIndex;
                         }
                     }
                 }
@@ -107,21 +147,36 @@ public class MinMaxAlgorithm : MonoBehaviour
                 {
                     if (board[xIndex, yIndex] == Board.emptyPosition)
                     {
+                        char[,] subBoard = Board.MirorBoard(board);
+                        subBoard[xIndex, yIndex] = Board.OppositePlayer(player);
+                        string subEncoded = Board.Encode(subBoard);
                         if (!scenarioMap.ContainsKey(encodedBoard))
                         {
-                            board[xIndex, yIndex] = Board.OppositePlayer(player);
-                            someMove.score = Minimax(board, depth, Board.OppositePlayer(player), xIndex, yIndex);
-                            scenarioMap.Add(encodedBoard, someMove);
+                            //scenarioMap.Add(subEncoded, Minimax(subBoard, depth, Board.OppositePlayer(player), xIndex, yIndex));
                         }
-                        if (someMove.score < bestMove.score)
+
+                        int score = Minimax(subBoard, depth, Board.OppositePlayer(player), xIndex, yIndex);
+                        if (score < bestMove.score)
                         {
-                            someMove = scenarioMap[encodedBoard];
+                            bestMove.score = score;
+                            bestMove.x = xIndex;
+                            bestMove.y = yIndex;
                         }
                     }
                 }
             }
         }
         
-        return someMove.score;
+/*        if (!scenarioMap.ContainsKey(encodedBoard))
+        {
+            scenarioMap.Add(encodedBoard, bestMove.score);
+        }
+        else
+        {
+            scenarioMap[encodedBoard] = bestMove.score;
+        }*/
+        
+        
+        return bestMove.score;
     }
 }

@@ -12,7 +12,7 @@ public static class Board
 
     public struct move
     {
-        public short score;
+        public int score;
         public ushort depth;
         //public char player;
         public ushort x;
@@ -38,7 +38,11 @@ public static class Board
         {
             return 'O';
         }
-        return 'X';
+        else if (player == 'O')
+        {
+            return 'X';
+        }
+        return '_';
     }
     
     public static bool IsValidMove(char[,] board, char player, ushort x, ushort y)
@@ -50,7 +54,7 @@ public static class Board
         return true;
     }
     
-    public static string Print(char[,] board)
+    public static string Visualize(char[,] board)
     {
         string output = "";
         for (ushort x = 0; x < 3; x++)
@@ -78,9 +82,9 @@ public static class Board
         return newBoard;
     }
 
-    public static short AvailableMovesCount(char[,] board)
+    public static int AvailableMovesCount(char[,] board)
     {
-        short counter = 0;
+        int counter = 0;
         for (ushort x = 0; x < 3; x++)
         {
             for (ushort y = 0; y < 3; y++)
@@ -99,12 +103,12 @@ public static class Board
     // checks the current move and returns true or false if win detected
     public static bool CheckForWin(char[,] board, char player, ushort moveX, ushort moveY)
     {
-        // not possible to win with only 4 moves on board
+/*        // not possible to win with only 4 moves on board
         if (AvailableMovesCount(board) > 5) 
-            return false;
+            return false;*/
     
         // check win scenarios only on verticle and horizontal line of current move
-        ushort count = 0;
+        int count = 0;
         // vertical to current move
         for (ushort y = 0; y < 3; y++)
             if (board[moveX, y] == player)
@@ -113,9 +117,13 @@ public static class Board
                 break;
 
         if (count > 2)
+        {
             return true;
+        }
         else
+        {
             count = 0;
+        }
     
         // horizontal to current move
         for (ushort x = 0; x < 3; x++)
@@ -149,8 +157,8 @@ public static class Board
 
         if (count > 2)
             return player;
-        else
-            count = 0;
+        
+        count = 0;
     
         for (ushort x = 0; x < 3; x++)
             if (board[x, moveY] == player)
