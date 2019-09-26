@@ -40,6 +40,6 @@ Research - Evolutionary Computing Systems Lab UNR
 
 Primary Development: Windows 10 using Rider 
 Version Control: Github  
-IDE: Rider
+IDE: Rider  
 Unity: Version 2019.2.5f
 
