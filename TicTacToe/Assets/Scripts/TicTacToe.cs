@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
@@ -28,6 +29,8 @@ public class TicTacToe : MonoBehaviour
     public Camera playerCamera;
     public GameObject reset;
 
+    public Text virtualConsole;
+
     public List<GameObject> peices;
     
     // private variables
@@ -36,6 +39,7 @@ public class TicTacToe : MonoBehaviour
     void Start()
     {
         minmax = transform.gameObject.AddComponent<MinMaxAlgorithm>();
+        minmax.ttt = this;
         //minmax.ttt = this;
         StartNewGame();
         float scale = 2.5f;
@@ -87,7 +91,13 @@ public class TicTacToe : MonoBehaviour
             currentPlayer = human;
         }
         Board.Visualize(gameBoard);
-        print("New Game Ready");
+        virtualConsole.text = "";
+        VirtualPrint("----------- New Game Ready -----------");
+    }
+
+    public void VirtualPrint(string str)
+    {
+        virtualConsole.text = virtualConsole.text + str + "\n";
     }
 
     // Update is called once per frame
@@ -106,11 +116,11 @@ public class TicTacToe : MonoBehaviour
                     {
                         if (Board.GetWinner(gameBoard, currentPlayer, nextMove.x, nextMove.x) == computer)
                         {
-                            print("The winner is the human");
+                            VirtualPrint("The winner is the human");
                         }
                         else
                         {
-                            print("The winner is nobody");
+                            VirtualPrint("The winner is nobody");
                         }
                         currentPlayer = Board.emptyPosition;
                     }
@@ -118,7 +128,7 @@ public class TicTacToe : MonoBehaviour
                 {
                     currentPlayer = Board.OppositePlayer(currentPlayer);
                 }
-                print(Board.Visualize(gameBoard));
+                //VirtualPrint(Board.Visualize(gameBoard));
 
             }
             else if (Input.GetMouseButtonDown(0))
@@ -152,11 +162,11 @@ public class TicTacToe : MonoBehaviour
                     {
                         if (Board.GetWinner(gameBoard, currentPlayer, moveX, moveY) == human)
                         {
-                            print("The winner is the human");
+                            VirtualPrint("The winner is the human");
                         }
                         else
                         {
-                            print("The winner is nobody");
+                            VirtualPrint("The winner is nobody");
                         }
                         currentPlayer = Board.emptyPosition;
                     }
@@ -164,7 +174,7 @@ public class TicTacToe : MonoBehaviour
                     {
                         currentPlayer = Board.OppositePlayer(currentPlayer);
                     }
-                    print(Board.Visualize(gameBoard));
+                    //VirtualPrint(Board.Visualize(gameBoard));
 
                 }
             }

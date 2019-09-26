@@ -764,9 +764,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/TreeBuilder.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TreeBuilderThread.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/StateTree.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MinMaxAlgorithm.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Board.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TicTacToe.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MinMaxAlgorithm.cs" />
       </list>
     </option>
   </component>
@@ -824,6 +824,7 @@
       <workItem from="1569380182428" duration="8805000" />
       <workItem from="1569390349862" duration="7414000" />
       <workItem from="1569398488037" duration="10237000" />
+      <workItem from="1569523215063" duration="2348000" />
     </task>
     <servers />
   </component>

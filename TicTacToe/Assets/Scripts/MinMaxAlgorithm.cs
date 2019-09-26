@@ -7,10 +7,9 @@ public class MinMaxAlgorithm : MonoBehaviour
 {
     // public 
     public Dictionary<string, int> scenarioMap; // string = encoded board state, move = next best move
-
+    public TicTacToe ttt;
     public char maximizingPlayer = 'X';
     // private
-
     private void Start()
     {
         scenarioMap = new Dictionary<string, int>();
@@ -30,23 +29,11 @@ public class MinMaxAlgorithm : MonoBehaviour
                 {
                     char[,] scenarioBoard = Board.MirorBoard(board);
                     scenarioBoard[x, y] = player;
-                    string encodedBoard = Board.Encode(scenarioBoard);
-                    // using memoization to speed things up
-/*                    if (!scenarioMap.ContainsKey(encodedBoard))
-                    {
-                        Board.move someMove = new Board.move();
-                        someMove.depth = 0;
-                        someMove.x = x;
-                        someMove.y = y;
-                        someMove.score = Minimax(scenarioBoard, 0, player, x, y);
-                        //scenarioMap.Add(encodedBoard, someMove);
-                    }*/
-  
                     Board.move someMove = new Board.move();
                     someMove.depth = 0;
                     someMove.x = x;
                     someMove.y = y;
-                    someMove.score = Minimax(scenarioBoard, 0, player, x, y);
+                    someMove.score = Minimax(scenarioBoard, 0, Board.OppositePlayer(player), x, y);
 
                     if (someMove.score > bestMove.score)
                     {
@@ -54,26 +41,16 @@ public class MinMaxAlgorithm : MonoBehaviour
                         bestMove.y = y;
                         bestMove.score = someMove.score;
                     }
-                    
-/*                    if (scenarioMap[encodedBoard] > bestMove.score)
-                    {
-                        bestMove.x = x;
-                        bestMove.y = y;
-                        bestMove.score = scenarioMap[encodedBoard];
-                        //bestMoveList.Clear();
-                        //bestMoveList.Add(scenarioMap[encodedBoard]);
-                        //bestMove = scenarioMap[encodedBoard];
-                    } else if (scenarioMap[encodedBoard] == bestMove.score)
-                    {
-                        //bestMoveList.Add(scenarioMap[encodedBoard]);
-                    }*/
-                    print(encodedBoard);
-                    print("Move (" + x + "," + y + ") score is: " + someMove.score);
+                    ttt.VirtualPrint("[Evaluating] move (" + x + "," + y + ") with score: " + someMove.score);
                 }
             }
         }
         
-        // select random move
+        ttt.VirtualPrint("[Selecting] move: (" + bestMove.x + "," + bestMove.y + ") score " + bestMove.score);
+        ttt.VirtualPrint("--------------------------------------");
+
+        
+        // TODO: select random of equal score moves once working properly
         
         return bestMove;
     }
@@ -99,14 +76,9 @@ public class MinMaxAlgorithm : MonoBehaviour
         if (Board.TerminalState(board, player, x, y))
         {
             int score = GetBoardScore(board, depth, player, x, y);
-/*            if (!scenarioMap.ContainsKey(encodedBoard))
-            {
-                scenarioMap.Add(encodedBoard, score);
-            }*/
             return score;
         }
         
-        //char[,] scenarioBoard = Board.MirorBoard(board);
         Board.move bestMove = new Board.move();
         bestMove.depth = depth;
         depth += 1;
@@ -122,10 +94,6 @@ public class MinMaxAlgorithm : MonoBehaviour
                         char[,] subBoard = Board.MirorBoard(board);
                         subBoard[xIndex, yIndex] = Board.OppositePlayer(player);
                         string subEncoded = Board.Encode(subBoard);
-                        if (!scenarioMap.ContainsKey(encodedBoard))
-                        {
-                            //scenarioMap.Add(subEncoded, Minimax(subBoard, depth, Board.OppositePlayer(player), xIndex, yIndex));
-                        }
 
                         int score = Minimax(subBoard, depth, Board.OppositePlayer(player), xIndex, yIndex);
                         if (score > bestMove.score)
@@ -150,10 +118,6 @@ public class MinMaxAlgorithm : MonoBehaviour
                         char[,] subBoard = Board.MirorBoard(board);
                         subBoard[xIndex, yIndex] = Board.OppositePlayer(player);
                         string subEncoded = Board.Encode(subBoard);
-                        if (!scenarioMap.ContainsKey(encodedBoard))
-                        {
-                            //scenarioMap.Add(subEncoded, Minimax(subBoard, depth, Board.OppositePlayer(player), xIndex, yIndex));
-                        }
 
                         int score = Minimax(subBoard, depth, Board.OppositePlayer(player), xIndex, yIndex);
                         if (score < bestMove.score)
@@ -166,17 +130,6 @@ public class MinMaxAlgorithm : MonoBehaviour
                 }
             }
         }
-        
-/*        if (!scenarioMap.ContainsKey(encodedBoard))
-        {
-            scenarioMap.Add(encodedBoard, bestMove.score);
-        }
-        else
-        {
-            scenarioMap[encodedBoard] = bestMove.score;
-        }*/
-        
-        
         return bestMove.score;
     }
 }

@@ -18,6 +18,8 @@ public static class Board
         public ushort x;
         public ushort y;
     }
+    
+
 
     public static string Encode(char[,] board)
     {
@@ -103,10 +105,6 @@ public static class Board
     // checks the current move and returns true or false if win detected
     public static bool CheckForWin(char[,] board, char player, ushort moveX, ushort moveY)
     {
-/*        // not possible to win with only 4 moves on board
-        if (AvailableMovesCount(board) > 5) 
-            return false;*/
-    
         // check win scenarios only on verticle and horizontal line of current move
         int count = 0;
         // vertical to current move
