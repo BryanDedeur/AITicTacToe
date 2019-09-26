@@ -4,7 +4,7 @@ An tic tac toe AI using minimax algorithm.
 
 #### How to play
 
-Navigate to this web address:  
+Navigate to this web address: https://www.cse.unr.edu/~bryand/ai-tictactoe/v1/index.html
 
 Click on the tile that you want to place a move on. If the tile is valid a "X" will fall on the tile. When the game is over click "Reset" to clear the board. Standard tic tac toe rules apply to the game.
 
